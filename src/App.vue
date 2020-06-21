@@ -3,7 +3,7 @@
     <TopBar ShowMenu></TopBar>
     <v-card id="GIANT" ref="GIANT">
       <div id="GIANT_BG"
-        v-anime-on-itst="{opacity: ['100%','10%'], easing: 'easeOutCubic', duration: '1000'}"></div>
+        v-anime-on-itst="{opacity: ['1','0.3'], easing: 'easeOutCubic', duration: '1000'}"></div>
       <div id="TITLE_TEXTS">
         <v-row justify="center">
           <v-col id="TITLE_1" class="NON-UP_DOWN_PADDING"
@@ -162,7 +162,7 @@ export default class App extends Vue{
 
     this.title2Anim = {
       targets: this.$refs.TITLE_2,
-      delay: '1500', opacity: '100%', marginTop: ['-3em', '0em'], easing: 'easeOutCubic', duration: '4000'
+      delay: '1500', opacity: ['0','1'], marginTop: ['-3em', '0em'], easing: 'easeOutCubic', duration: '4000'
     };
     
     //爲TITLE_2
