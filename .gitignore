@@ -3,6 +3,7 @@
 
 # Build
 /bin
+!/bin/index.html
 
 # Logs
 logs
