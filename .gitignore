@@ -2,7 +2,7 @@
 /node_modules
 
 # Build
-/bin
+/bin/*
 !/bin/index.html
 
 # Logs
