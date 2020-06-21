@@ -71,6 +71,7 @@
   /*==========須據視口大小而定者==========*/
   #GIANT{
     height: 24em;
+    opacity: 0;
   }
 
   #GIANT_BG{
