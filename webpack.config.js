@@ -10,11 +10,11 @@ module.exports = {
     },
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: "./bin"
+        contentBase: "./bin",
+        disableHostCheck: true
     },
     plugins: [
         new VueLoaderPlugin()
-        
     ],
     module:{
         rules: [

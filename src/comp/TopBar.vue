@@ -1,6 +1,6 @@
 <template>
 	<div class="TopBar">
-		<v-app-bar color="primary" fixed>
+		<v-app-bar color="primary" fixed ref="bar">
 			<div v-if="isMenuShow">
 				<v-app-bar-nav-icon></v-app-bar-nav-icon>
 			</div>
@@ -10,15 +10,16 @@
 				<div v-if="!isFullTitleTextShow">EATI</div>
 			</v-toolbar-title>
       <v-spacer />
-			<v-btn text><div class="TITLE_OPT_TEXT">加入我们</div></v-btn>
-			<v-btn text><div class="TITLE_OPT_TEXT">工程</div></v-btn>
+			<router-link to="/join-us"><v-btn text ><div class="TITLE_OPT_TEXT">加入我们</div></v-btn></router-link>
+			<v-btn text ><div class="TITLE_OPT_TEXT">工程</div></v-btn>
 		</v-app-bar>
 	</div>
 </template>
 
 <style>
 	.TopBar{
-		
+		height: auto;
+		display: block;
 	}
 	#LOGO_PIC{
 		margin-right: 1em;
@@ -42,27 +43,26 @@ import { Mounted } from 'vue-class-decorator';
 
 @Component
 export default class TopBar extends Vue{
-		@Prop() isMenuShow: boolean;
-		isFullTitleTextShow: boolean = false;
-		screenWidth: number = 0;
-		screenHeight: number = 0;
+		@Prop() public isMenuShow: boolean;
+		public topBarHeight: number;
+		public isFullTitleTextShow: boolean = false;
 
 		@Mounted()
-		onMounted() : void{
+		private onMounted() : void{
 			var PaHaGa = this;
-			function adjustWH() : void {
-				PaHaGa.screenWidth = document.body.clientWidth;
-				PaHaGa.screenHeight = document.body.clientHeight;
-			}
 
-			adjustWH();
-			window.onresize = adjustWH;
+			this.adjust();
+			window.addEventListener('resize', this.adjust);
 		}
 
-		@Watch('screenWidth')
-		onScreenWidthChanged(val: number, oldVal: number){
-			this.isFullTitleTextShow = val > 700;
+		private adjust() : void{
+			this.isFullTitleTextShow = document.body.clientWidth > 700;
+			this.topBarHeight = (<Vue>this.$refs['bar']).$el.clientHeight;
 		}
+
+
+		
+		
 
 }
 </script>
